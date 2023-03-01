@@ -15,12 +15,12 @@
 get_header();
 ?>
 
-    <div id="main-body" class="clearfix" style="margin-top: 20px; margin-bottom: 70px;">
+    <div id="main-body" class="clearfix" style="margin-top: 20px; margin-bottom: 70px;font-size: 16px;">
         <div class="container">
             <div id="main-content">
                 <div id="content">
                     <div class="heading">
-                        <h1>LIÊN HỆ</h1>
+                        <h1 style="font-size: 22px;">LIÊN HỆ</h1>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">

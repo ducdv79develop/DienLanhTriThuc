@@ -43,7 +43,7 @@ get_header();
                                         );
                                         the_post_thumbnail('blog-thumb',$post_thumbnail_attr );
                                     } else {
-                                        echo '<img class="loading" src="'.THEME_URL.'/assets/template/images/no-thumb.png" alt="'.get_the_title().'">';
+                                        echo '<img class="loading" src="'.THEME_URL.'/assets/images/no-thumb.png" alt="'.get_the_title().'">';
                                     }
                                     ?>
                                 </a>
@@ -99,7 +99,7 @@ get_header();
                                                 );
                                                 the_post_thumbnail('blog-thumb',$post_thumbnail_attr );
                                             } else {
-                                                echo '<img class="loading" src="'.THEME_URL.'/assets/template/images/no-thumb.png" alt="'.get_the_title().'">';
+                                                echo '<img class="loading" src="'.THEME_URL.'/assets/images/no-thumb.png" alt="'.get_the_title().'">';
                                             }
                                             ?>
                                         </a>

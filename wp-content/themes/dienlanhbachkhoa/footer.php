@@ -18,7 +18,7 @@
                 <div class="copyright">
                     <div id="text-2" class="widget_text">
                         <div class="textwidget">
-                            <h4>Trung Tâm Điện Lạnh Kiên Hiền</h4>
+                            <h4>Điện Lạnh Bách Khoa 24/7</h4>
                             Địa chỉ: C0 Khu 134 Thanh Bình - Mộ Lao - Hà Đông<br>
                             Website: <a href="https://dienlanhkienhien.com">https://dienlanhkienhien.com</a>
                             - Email: dienlanhkienhien@gmail.com <br>

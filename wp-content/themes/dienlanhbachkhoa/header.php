@@ -31,9 +31,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-8">
-                                <a href="https://dienlanhkienhien.com" title="Trung Tâm Điện Lạnh Kiên Hiền">
-                                    <img class="logo" alt="Trung Tâm Điện Lạnh Kiên Hiền"
-                                         src="/public/upload/images/logo.png"
+                                <a href="<?php echo home_url("/"); ?>" title="Điện Lạnh Bách Khoa 24/7">
+                                    <img class="logo" alt="Điện Lạnh Bách Khoa 24/7"
+                                         src="<?php echo THEME_URL . '/assets/images/logo.png'?>"
                                          style="margin-top:10px;margin-bottom:10px;">
                                 </a>
                             </div>
@@ -61,11 +61,11 @@
                                         <i class="fa fa-bars"></i>
                                     </button>
                                     <div class="search visible-xs">
-                                        <form action="https://dienlanhkienhien.com/tim-kiem.html" method="GET">
+                                        <form action="<?php echo home_url("/"); ?>" method="GET">
                                             <input type="text" class="form-control field" name="key" id="s"
                                                    placeholder="Tìm kiếm...">
                                             <input class="submit btn" type="image"
-                                                   src="/public/template/user/images/icon-search.png" alt="Tìm kiếm">
+                                                   src="<?php echo THEME_URL . '/assets/images/icon-search.png'?>" alt="Tìm kiếm">
                                         </form>
                                     </div>
                                 </div>

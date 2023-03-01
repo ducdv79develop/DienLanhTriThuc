@@ -207,12 +207,9 @@ function dvb_custom_theme()
     wp_enqueue_style('dvb-style', get_stylesheet_uri());
 
     wp_enqueue_script('jquery_js', THEME_URL . 'assets/js/jquery-1.11.2.min.js', array('jquery'), false, true);
-//    wp_enqueue_script('jquery_migrate_js', THEME_URL . 'assets/js/jquery-migrate-1.2.1.min.js', array('jquery'), false, true);
     wp_enqueue_script('jquery_ui_js', THEME_URL . 'assets/js/jquery-ui.min.js', array('jquery'), false, true);
-//    wp_enqueue_script('jquery_ui_touch_js', THEME_URL . 'assets/js/jquery.ui.touch-punch.min.js', array('jquery'), false, true);
     wp_enqueue_script('bootstrap_js', THEME_URL . 'assets/js/bootstrap.min.js', array('jquery'), false, true);
     wp_enqueue_script('jquery_fancybox_js', THEME_URL . 'assets/js/jquery.fancybox.min.js', array('jquery'), false, true);
-    wp_enqueue_script('jquery_tap_js', THEME_URL . 'assets/js/jquery.tap.min.js', array('jquery'), false, true);
     wp_enqueue_script('off_canvas_js', THEME_URL . 'assets/js/off-canvas.js', array('jquery'), false, true);
     wp_enqueue_script('carousel_js', THEME_URL . 'assets/js/owl.carousel.min.js', array('jquery'), false, true);
     wp_enqueue_script('scroll_top_js', THEME_URL . 'assets/js/scroll-to-top.min.js', array('jquery'), false, true);
