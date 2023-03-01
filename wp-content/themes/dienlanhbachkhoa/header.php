@@ -24,20 +24,44 @@
 <?php wp_body_open(); ?>
 <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'dienlanhbachkhoa'); ?></a>
+    <div class="t3-off-canvas off-canvas-effect-4 off-canvas-left" id="t3-off-canvas">
+        <div class="t3-off-canvas-header">
+            <h2 class="t3-off-canvas-header-title">DANH MỤC</h2>
+            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">X</button>
+        </div>
+        <div class="t3-off-canvas-body">
+            <div id="mobile-menu-wrap" class="t3-module module ">
+                <div class="module-ct">
+                    <?php
+//                    wp_nav_menu(array(
+//                        'theme_location' => 'menu-1',
+//                        'menu_id' => 'mobile-menu',
+//                        'menu_class' => 'nav nav-pills nav-stacked',
+//                        'container' => '',
+//                        'container_id' => '',
+//                        'container_class' => '',
+//                        'fallback_cb' => 'WP_Bootstrap_Navwalker::fallback',
+//                        'walker' => new WP_Bootstrap_Navwalker()
+//                    ));
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="t3-wrapper">
         <div class="hfeed site">
             <header>
                 <div class="header clearfix">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-8">
+                            <div class="col-md-6">
                                 <a href="<?php echo home_url("/"); ?>" title="Điện Lạnh Bách Khoa 24/7">
                                     <img class="logo" alt="Điện Lạnh Bách Khoa 24/7"
                                          src="<?php echo THEME_URL . '/assets/images/logo.png'?>"
                                          style="margin-top:10px;margin-bottom:10px;">
                                 </a>
                             </div>
-                            <div class="col-lg-4 address">
+                            <div class="col-md-6 address">
 
                                 <form action="<?php echo home_url("/"); ?>" method="GET">
                                     <div class="input-group">

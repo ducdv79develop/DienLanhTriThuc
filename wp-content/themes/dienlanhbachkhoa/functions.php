@@ -149,7 +149,7 @@ add_action( 'widgets_init', 'dienlanhbachkhoa_widgets_init' );
  * Enqueue scripts and styles.
  */
 function dienlanhbachkhoa_scripts() {
-	wp_enqueue_style( 'dienlanhbachkhoa-style', get_stylesheet_uri(), array(), _S_VERSION );
+//	wp_enqueue_style( 'dienlanhbachkhoa-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'dienlanhbachkhoa-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'dienlanhbachkhoa-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
@@ -204,12 +204,15 @@ function dvb_custom_theme()
     wp_enqueue_style('owl_default', THEME_URL . 'assets/css/owl.theme.default.min.css');
     wp_enqueue_style('quick_call_button', THEME_URL . 'assets/css/quick-call-button.min.css');
     wp_enqueue_style('style_custom', THEME_URL . 'assets/style.css');
-    wp_enqueue_style('dvb-style', get_stylesheet_uri());
+    wp_enqueue_style('main-style', get_stylesheet_uri());
 
     wp_enqueue_script('jquery_js', THEME_URL . 'assets/js/jquery-1.11.2.min.js', array('jquery'), false, true);
+    wp_enqueue_script('jquery_17_js', 'https://code.jquery.com/jquery-1.7.2.min.js', array('jquery'), false, true);
     wp_enqueue_script('jquery_ui_js', THEME_URL . 'assets/js/jquery-ui.min.js', array('jquery'), false, true);
+    wp_enqueue_script('jquery_ui_touch_js', THEME_URL . 'assets/js/jquery.ui.touch-punch.min.js', array('jquery'), false, true);
     wp_enqueue_script('bootstrap_js', THEME_URL . 'assets/js/bootstrap.min.js', array('jquery'), false, true);
     wp_enqueue_script('jquery_fancybox_js', THEME_URL . 'assets/js/jquery.fancybox.min.js', array('jquery'), false, true);
+    wp_enqueue_script('jquery_tap_js', THEME_URL . 'assets/js/jquery.tap.min.js', array('jquery'), false, true);
     wp_enqueue_script('off_canvas_js', THEME_URL . 'assets/js/off-canvas.js', array('jquery'), false, true);
     wp_enqueue_script('carousel_js', THEME_URL . 'assets/js/owl.carousel.min.js', array('jquery'), false, true);
     wp_enqueue_script('scroll_top_js', THEME_URL . 'assets/js/scroll-to-top.min.js', array('jquery'), false, true);

@@ -5,7 +5,6 @@
 
 get_header();
 ?>
-
     <div id="main-body" class="clearfix">
         <div class="container">
             <div class="row">
@@ -77,7 +76,6 @@ get_header();
                 <div class="col-md-4">
                     <div class="widget_bulletin classic">
                         <h3 class="widget-title"><span>TIN TỨC MỚI</span></h3>
-
                         <ul>
                             <?php
                             $argsArticel = [

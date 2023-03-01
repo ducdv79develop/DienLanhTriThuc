@@ -16,14 +16,13 @@
         <div class="row">
             <div class="col-md-5 col-sm-5 col-xs-12">
                 <div class="copyright">
-                    <div id="text-2" class="widget_text">
+                    <div id="text-2" class="widget_text" style="font-size: 15px;">
                         <div class="textwidget">
-                            <h4>Điện Lạnh Bách Khoa 24/7</h4>
+                            <h3 style="font-size: 20px;font-weight: 700;">Điện Lạnh Bách Khoa 24/7</h3>
                             Địa chỉ: C0 Khu 134 Thanh Bình - Mộ Lao - Hà Đông<br>
-                            Website: <a href="https://dienlanhkienhien.com">https://dienlanhkienhien.com</a>
-                            - Email: dienlanhkienhien@gmail.com <br>
-                            Điện thoại: 0974 410 421
-                            - Hotline: 0974 410 421
+                            Website: <a href="https://dienlanhbachkhoa247.com">https://dienlanhbachkhoa247.com</a><br>
+                            Email: <a href="mailto:dienlanhbachkhoa247@gmail.com">dienlanhbachkhoa247@gmail.com</a> <br>
+                            Điện thoại: 0974 410 421 - Hotline: 0974 410 421
                         </div>
                     </div>
                 </div>
