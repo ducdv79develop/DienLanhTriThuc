@@ -18,10 +18,10 @@
                 <div class="copyright">
                     <div id="text-2" class="widget_text" style="font-size: 15px;">
                         <div class="textwidget">
-                            <h3 style="font-size: 20px;font-weight: 700;">Điện Lạnh Bách Khoa 24/7</h3>
+                            <h3 style="font-size: 20px;font-weight: 700;">Điện Lạnh Bách Khoa 365</h3>
                             Địa chỉ: C0 Khu 134 Thanh Bình - Mộ Lao - Hà Đông<br>
-                            Website: <a href="https://dienlanhbachkhoa247.com">https://dienlanhbachkhoa247.com</a><br>
-                            Email: <a href="mailto:dienlanhbachkhoa247@gmail.com">dienlanhbachkhoa247@gmail.com</a> <br>
+                            Website: <a href="https://dienlanhbachkhoa365.net">https://dienlanhbachkhoa365.net</a><br>
+                            Email: <a href="mailto:dienlanhbachkhoa365@gmail.com">dienlanhbachkhoa247@gmail.com</a> <br>
                             Điện thoại: 0974 410 421 - Hotline: 0974 410 421
                         </div>
                     </div>

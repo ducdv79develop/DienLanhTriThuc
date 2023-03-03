@@ -9,7 +9,7 @@ get_header();
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12">
-                    <?php echo do_shortcode('[metaslider id="89"]'); ?>
+                    <?php echo do_shortcode('[metaslider id="157"]'); ?>
                 </div>
             </div>
             <div class="divider_line4"></div>
