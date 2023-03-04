@@ -65,7 +65,6 @@ get_header();
             <div class="row">
                 <div class="col-md-8">
                     <?php
-                        /* Start the Loop */
                         while ( have_posts() ) :
                             the_post();
                             the_content();
@@ -116,6 +115,6 @@ get_header();
             </div>
         </div>
     </div>
-
+    <br>
 <?php
 get_footer();

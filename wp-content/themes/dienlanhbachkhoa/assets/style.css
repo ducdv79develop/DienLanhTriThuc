@@ -556,7 +556,7 @@ header .container {
 	width: 50%;
 	border: 1px solid #EEE;
 	padding: 5px 5px;
-	text-align: right;
+	text-align: left;
 }
 
 .address ul li strong {
@@ -1083,8 +1083,8 @@ h3.navbar-brand_ {
 }
 
 .thumb-pad1 .thumbnail figure img {
-	width: 100%;
-	height: auto;
+	width: 100px;
+	max-height: 100px;
 }
 
 .thumb-pad2 .thumbnail figure {
@@ -2323,21 +2323,21 @@ footer .address ul li strong {
 }
 
 .backtotop {
-	background: #555 none repeat scroll 0 0;
-	bottom: 5px;
+	background-color: rgb(88 88 88 / 42%);
+	bottom: 6px;
 	color: #f5f5f5 !important;
 	font-size: 11px;
 	font-weight: 600;
-	height: 50px;
+	height: 41px;
 	padding: 0;
 	position: absolute;
-	right: 0px;
+	right: -4px;
 	text-align: center;
 	text-transform: uppercase;
-	width: 50px;
+	width: 41px;
 	z-index: 9999;
 	border-radius: 50%;
-	border: 1px solid #555;
+	border: 1px solid rgb(88 88 88 / 42%);
 }
 
 .backtotop:hover {
@@ -2346,7 +2346,7 @@ footer .address ul li strong {
 
 .backtotop .fa {
 	display: inline-block;
-	font-size: 30px;
+	font-size: 24px;
 	padding-top: 5px;
 	z-index: 9;
 }

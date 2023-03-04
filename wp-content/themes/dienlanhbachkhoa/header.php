@@ -112,4 +112,13 @@
                     </div>
                 </div>
             </header>
-
+            <?php
+                if(!is_front_page() && function_exists('bcn_display')) {?>
+                <div id="pathway">
+                    <div class="container">
+                        <div id="breadcrumbs">
+                            <?php bcn_display();?>
+                        </div>
+                    </div>
+                </div>
+            <?php }?>

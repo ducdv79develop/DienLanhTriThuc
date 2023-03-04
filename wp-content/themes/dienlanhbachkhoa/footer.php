@@ -19,10 +19,10 @@
                     <div id="text-2" class="widget_text" style="font-size: 15px;">
                         <div class="textwidget">
                             <h3 style="font-size: 20px;font-weight: 700;">Điện Lạnh Bách Khoa 365</h3>
-                            Địa chỉ: C0 Khu 134 Thanh Bình - Mộ Lao - Hà Đông<br>
+                            Địa chỉ: 250 Nguyễn Xiển - Hà Nội<br>
                             Website: <a href="https://dienlanhbachkhoa365.net">https://dienlanhbachkhoa365.net</a><br>
-                            Email: <a href="mailto:dienlanhbachkhoa365@gmail.com">dienlanhbachkhoa247@gmail.com</a> <br>
-                            Điện thoại: 0974 410 421 - Hotline: 0974 410 421
+                            Email: <a href="mailto:dienlanhbachkhoa365@gmail.com">dienlanhbachkhoa365@gmail.com</a> <br>
+                            Điện thoại: <a href="tel:0867887653">0867 887 653</a> - Hotline: <a href="tel:0865492444">0865 492 444</a>
                         </div>
                     </div>
                 </div>
@@ -30,20 +30,14 @@
             <div class="col-md-7 col-sm-7 col-xs-12">
                 <div class="address">
                     <ul>
-                        <li><i class="fa fa-map-marker"></i> 128C Đại La - Hai Bà Trưng - Hà Nội<strong>0974410421</strong>
-                        </li>
-                        <li><i class="fa fa-map-marker"></i> Số 41/215 Triều Khúc - Thanh Xuân<strong>0974410421</strong>
-                        </li>
-                        <li><i class="fa fa-map-marker"></i> Số 41/2 Hoàng Quốc Việt - Hà Nội<strong>0358265892</strong>
-                        </li>
-                        <li><i class="fa fa-map-marker"></i> 219 Quang Trung - Hà Đông - Hà Nội<strong>0974410421</strong>
-                        </li>
-                        <li><i class="fa fa-map-marker"></i> 165 Nguyễn Văn Cừ - Long Biên - Hà Nội<strong>0337422288</strong>
-                        </li>
-                        <li><i class="fa fa-map-marker"></i> 116 Kim Mã - Hà Nội<strong>0337422288</strong>
-                        </li>
-                        <li><i class="fa fa-map-marker"></i> Số 1 Đình Thôn - Mỹ Đình - Hà Nội<strong>0358265892</strong>
-                        </li>
+                        <li><i class="fa fa-map-marker"></i> 250 Nguyễn Xiển - Hà Nội<strong></strong></li>
+                        <li><i class="fa fa-map-marker"></i> 99 Định Công - Hà Nội<strong></strong></li>
+                        <li><i class="fa fa-map-marker"></i> 193 Giáp Nhất - Hà Nội<strong></strong></li>
+                        <li><i class="fa fa-map-marker"></i> 405 Thuỵ Khuê - Hà Nội<strong></strong></li>
+                        <li><i class="fa fa-map-marker"></i> 368 Minh Khai - Hà Nội<strong></strong></li>
+                        <li><i class="fa fa-map-marker"></i> 38 Đường Văn Phú - Hà Đông - Hà Nội<strong></strong></li>
+                        <li><i class="fa fa-map-marker"></i> 54 Hữu Hoà - Thanh Trì - Hà Nội<strong></strong></li>
+                        <li><i class="fa fa-map-marker"></i> 67 Nguyễn Văn Cừ - Hà Nội<strong></strong></li>
                     </ul>
                 </div>
             </div>
