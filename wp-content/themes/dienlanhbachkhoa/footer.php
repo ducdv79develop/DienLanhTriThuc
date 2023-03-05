@@ -18,10 +18,10 @@
                 <div class="copyright">
                     <div id="text-2" class="widget_text" style="font-size: 15px;">
                         <div class="textwidget">
-                            <h3 style="font-size: 20px;font-weight: 700;">Điện Lạnh Bách Khoa 365</h3>
+                            <h3 style="font-size: 20px;font-weight: 700;">Điện Lạnh Bách Khoa 360</h3>
                             Địa chỉ: 250 Nguyễn Xiển - Hà Nội<br>
-                            Website: <a href="https://dienlanhbachkhoa365.net">https://dienlanhbachkhoa365.net</a><br>
-                            Email: <a href="mailto:dienlanhbachkhoa365@gmail.com">dienlanhbachkhoa365@gmail.com</a> <br>
+                            Website: <a href="https://dienlanhbachkhoa360.com">https://dienlanhbachkhoa360.com</a><br>
+                            Email: <a href="mailto:dienlanhbachkhoa360@gmail.com">dienlanhbachkhoa360@gmail.com</a> <br>
                             Điện thoại: <a href="tel:0867887653">0867 887 653</a> - Hotline: <a href="tel:0865492444">0865 492 444</a>
                         </div>
                     </div>

@@ -55,8 +55,8 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="<?php echo home_url("/"); ?>" title="Điện Lạnh Bách Khoa 24/7">
-                                    <img class="logo" alt="Điện Lạnh Bách Khoa 24/7"
+                                <a href="<?php echo home_url("/"); ?>" title="Điện Lạnh Bách Khoa 360">
+                                    <img class="logo" alt="Điện Lạnh Bách Khoa 360"
                                          src="<?php echo THEME_URL . '/assets/images/logo.png'?>"
                                          style="margin-top:10px;margin-bottom:10px;">
                                 </a>
@@ -113,7 +113,7 @@
                 </div>
             </header>
             <?php
-                if(!is_front_page() && function_exists('bcn_display')) {?>
+                if (!is_front_page() && function_exists('bcn_display')) { ?>
                 <div id="pathway">
                     <div class="container">
                         <div id="breadcrumbs">
@@ -121,4 +121,4 @@
                         </div>
                     </div>
                 </div>
-            <?php }?>
+            <?php } ?>

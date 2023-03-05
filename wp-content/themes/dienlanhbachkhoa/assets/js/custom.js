@@ -7,11 +7,6 @@
             }
         });
 
-        //Disable part of page
-        $('#main-content').bind('cut copy paste', function (e) {
-            e.preventDefault();
-        });
-
         $("#partner-widget-2-carousel").owlCarousel({
             loop: true,
             dots: false,
@@ -170,27 +165,6 @@
         } else {
             $('#sidebar-right').css("height", height_right);
         }
-
-        $('#feedback-form').on('submit', function (e) {
-            e.preventDefault();
-
-            $('.text-danger').empty();
-
-            $.ajax({
-                url: $('#feedback-submit').data('url'),
-                method: 'POST',
-                data: $(this).serialize(),
-                success: function (data) {
-                    alert(data.flash_message);
-                },
-                error: function (data) {
-                    var errors = data.responseJSON.errors;
-                    $.each(errors, function (key, item) {
-                        $('#' + key + '-error').text(item[0]);
-                    });
-                }
-            });
-        })
 
         $('#feedback-reset').on('click', function () {
             $('.text-danger').empty();

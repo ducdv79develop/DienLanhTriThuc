@@ -195,7 +195,7 @@ require get_template_directory() . '/inc/meta-boxes.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-function dvb_custom_theme()
+function dienlanhbachkhoa_custom_theme()
 {
     wp_enqueue_style('bootstrap', THEME_URL . 'assets/css/bootstrap.min.css');
     wp_enqueue_style('fontawesome', THEME_URL . 'assets/css/font-awesome.min.css');
@@ -222,6 +222,6 @@ function dvb_custom_theme()
         wp_enqueue_script('comment-reply');
     }
 }
-add_action('wp_enqueue_scripts', 'dvb_custom_theme', 10);
+add_action('wp_enqueue_scripts', 'dienlanhbachkhoa_custom_theme', 10);
 
 

@@ -28,7 +28,6 @@ get_header();
                         ),
                     ];
                     $articleQuery = new WP_Query($argsArticel);
-                    $first_post = true;
                     ?>
                     <?php if ($articleQuery->have_posts()) : ?>
                         <?php while ($articleQuery->have_posts()) : $articleQuery->the_post(); ?>
@@ -82,7 +81,6 @@ get_header();
                                 'posts_per_page' => 6,
                             ];
                             $articleQuery = new WP_Query($argsArticel);
-                            $first_post = true;
                             ?>
                             <?php if ($articleQuery->have_posts()) : ?>
                                 <?php while ($articleQuery->have_posts()) : $articleQuery->the_post(); ?>
