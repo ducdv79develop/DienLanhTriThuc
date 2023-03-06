@@ -1,0 +1,56 @@
+<?php
+/**
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package dienlanhbachkhoa
+ */
+
+?>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-sm-5 col-xs-12">
+                <div class="copyright">
+                    <div id="text-2" class="widget_text" style="font-size: 15px;">
+                        <div class="textwidget">
+                            <h3 style="font-size: 20px;font-weight: 700;">Điện Lạnh Bách Khoa 360</h3>
+                            Địa chỉ: 250 Nguyễn Xiển - Hà Nội<br>
+                            Website: <a href="https://dienlanhbachkhoa360.com">https://dienlanhbachkhoa360.com</a><br>
+                            Email: <a href="mailto:dienlanhbachkhoa360@gmail.com">dienlanhbachkhoa360@gmail.com</a> <br>
+                            Điện thoại: <a href="tel:0867887653">0867 887 653</a> - Hotline: <a href="tel:0865492444">0865 492 444</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 col-sm-7 col-xs-12">
+                <div class="address">
+                    <ul>
+                        <li><i class="fa fa-map-marker"></i> 250 Nguyễn Xiển - Hà Nội<strong></strong></li>
+                        <li><i class="fa fa-map-marker"></i> 99 Định Công - Hà Nội<strong></strong></li>
+                        <li><i class="fa fa-map-marker"></i> 193 Giáp Nhất - Hà Nội<strong></strong></li>
+                        <li><i class="fa fa-map-marker"></i> 405 Thuỵ Khuê - Hà Nội<strong></strong></li>
+                        <li><i class="fa fa-map-marker"></i> 368 Minh Khai - Hà Nội<strong></strong></li>
+                        <li><i class="fa fa-map-marker"></i> 38 Đường Văn Phú - Hà Đông - Hà Nội<strong></strong></li>
+                        <li><i class="fa fa-map-marker"></i> 54 Hữu Hoà - Thanh Trì - Hà Nội<strong></strong></li>
+                        <li><i class="fa fa-map-marker"></i> 67 Nguyễn Văn Cừ - Hà Nội<strong></strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</div>
+</div>
+</div>
+
+
+<?php wp_footer(); ?>
+
+</body>
+</html>
