@@ -772,12 +772,15 @@ header .container {
 .carousel-control.left {
 	background-image: none;
 }
-
+.services .col-md-4 {
+	height: 100px;
+}
 .services img {
 	float: left;
 	margin: 0 10px 15px 0;
 	width: 100px;
-	height: 133px;
+	max-height: 80px;
+	height: auto;
 }
 
 .services h2 {

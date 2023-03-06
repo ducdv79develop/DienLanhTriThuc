@@ -79,6 +79,8 @@ get_header();
                             $argsArticel = [
                                 'post_type' => 'post',
                                 'posts_per_page' => 6,
+                                'orderby'     => 'modified',
+                                'order'       => 'DESC',
                             ];
                             $articleQuery = new WP_Query($argsArticel);
                             ?>
@@ -102,7 +104,7 @@ get_header();
                                             <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
                                         </h4>
-                                        <time class="meta-date"><?php echo get_the_date("d/m/Y H:i:s") ?></time>
+                                        <time class="meta-date"><?php echo get_the_modified_time("d/m/Y H:i:s") ?></time>
                                     </li>
 
                                 <?php endwhile; ?>
