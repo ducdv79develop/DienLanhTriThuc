@@ -375,15 +375,15 @@ header .container {
 }
 
 .navbar-default {
-	background: #5271ff;
+	background: #0f5e97;
 }
 
 .navbar-default .navbar-nav>li>a {
 	white-space: nowrap;
 	color: #FFF;
 	font-weight: bold;
-	border-right: 1px solid #67aede;
-	border-left: 1px solid #70c5ff;
+	border-right: 1px solid #388ac2;
+	border-left: 1px solid #486f8a;
 	text-transform: uppercase;
 }
 
@@ -391,7 +391,7 @@ header .container {
 .navbar-default .navbar-nav>li>a:hover,
 .navbar-default .navbar-nav>li:hover {
 	color: #FFF;
-	background-color: #2980B9
+	background-color: #0f5e97
 }
 
 .navbar-default .navbar-nav>.active>a,
@@ -527,7 +527,7 @@ header .container {
 	margin: 0;
 	max-width: 100%;
 	height: auto;
-	width: 65%;
+	width: 80%;
 }
 
 .logo-text #site-title {
@@ -546,7 +546,7 @@ header .container {
 }
 
 .address {
-	margin: 40px 0;
+	margin: 40px 0 30px 0;
 	font-size: 13px;
 	overflow: hidden;
 }
@@ -1224,7 +1224,7 @@ h3.navbar-brand_ {
 
 .widget.widget_nav_menu .widget-title {
 	padding: 8px 10px;
-	background: #3498DB;
+	background: #0f5e97;
 	color: #FFF;
 	margin: 0
 }
@@ -2192,7 +2192,7 @@ h1.page-title {
 }
 
 footer {
-	background: #5271ff;
+	background: #0f5e97;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	color: #EEE;
@@ -3395,7 +3395,7 @@ html[dir="ltr"] .off-canvas-right.old-ie .t3-off-canvas {
 		line-height: 80px;
 	}
 	.logo {
-		width: 75%;
+		width: 90%;
 	}
 	#mobile-menu {
 		margin-left: 0;
@@ -3997,7 +3997,7 @@ html[dir="ltr"] .off-canvas-right.old-ie .t3-off-canvas {
 	.logo {
 		margin: 0 auto;
 		display: inline-block;
-		width: 60%;
+		width: 80%;
 	}
 
 	.navbar-default .navbar-nav>li>a {
@@ -4078,7 +4078,7 @@ html[dir="ltr"] .off-canvas-right.old-ie .t3-off-canvas {
 }
 
 .widget.widget_nav_menu .menu-services-menu-container ul li {
-    color: #1184d8;
+    color: #005a9b;
     font-size: 15px;
     font-weight: bold;
     padding: 15px 20px 15px 20px;
