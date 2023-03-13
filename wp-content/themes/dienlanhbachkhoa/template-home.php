@@ -19,6 +19,9 @@ get_header();
                     $argsArticel = [
                         'post_type' => 'post',
                         'posts_per_page' => 6,
+                        'meta_key' => 'post_sort_order',
+                        'orderby'  => 'meta_value_num',
+                        'order'    => 'ASC',
                         'meta_query' => array(
                             array(
                                 'key' => 'post_recommend',

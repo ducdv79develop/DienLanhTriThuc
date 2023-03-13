@@ -1,11 +1,11 @@
 <?php
 
-add_filter('rwmb_meta_boxes', 'dvb_register_meta_boxes');
+add_filter('rwmb_meta_boxes', 'theme_register_meta_boxes');
 
-function dvb_register_meta_boxes($meta_boxes)
+function theme_register_meta_boxes($meta_boxes)
 {
     $meta_boxes[] = array(
-        'title' => __('Cấu hình cơ bản', 'dvb'),
+        'title' => __('Cấu hình cơ bản', 'bcfg'),
         'pages' => array('post'),
         'fields' => array(
             [
@@ -13,6 +13,12 @@ function dvb_register_meta_boxes($meta_boxes)
                 'id'   => 'post_recommend',
                 'type' => 'checkbox',
                 'std'  => 0,
+            ],
+            [
+                'name' => 'Thứ tự sắp xếp',
+                'id'   => 'post_sort_order',
+                'type' => 'number',
+                'std'  => 1,
             ],
         ),
     );

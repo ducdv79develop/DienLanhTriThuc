@@ -224,4 +224,17 @@ function dienlanhbachkhoa_custom_theme()
 }
 add_action('wp_enqueue_scripts', 'dienlanhbachkhoa_custom_theme', 10);
 
+add_action('wp_head','my_analytics', 20);
+function my_analytics() {
+    ?>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XMHSKV8T4H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
+        gtag('config', 'G-XMHSKV8T4H');
+    </script>
+    <?php
+}
