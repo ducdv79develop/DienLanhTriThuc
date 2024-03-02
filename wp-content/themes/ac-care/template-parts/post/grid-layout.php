@@ -20,7 +20,7 @@
       <?php }?>
       <p><?php the_excerpt(); ?></p>
       <div class="read-btn">
-        <a href="<?php the_permalink(); ?>"><?php esc_html_e('Read More','ac-care'); ?><i class="fas fa-arrow-right"></i><span class="screen-reader-text"><?php esc_html_e('Read More','ac-care'); ?></span></a>
+        <a href="<?php the_permalink(); ?>">Xem chi tiết<i class="fas fa-arrow-right"></i><span class="screen-reader-text">Xem chi tiết</span></a>
       </div>
       <div class="clearfix"></div>
     </div>

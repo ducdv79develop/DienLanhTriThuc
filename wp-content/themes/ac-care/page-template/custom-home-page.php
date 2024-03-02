@@ -40,7 +40,7 @@ get_header(); ?>
 			            <div class="inner-carousel">
 			              	<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 							<p><?php $ac_care_excerpt = get_the_excerpt(); echo esc_html( ac_care_string_limit_words( $ac_care_excerpt, esc_attr(get_theme_mod('ac_care_slider_excerpt_length','15') ) )); ?></p>
-			              	<a href="<?php the_permalink(); ?>" class="read-btn"><?php esc_html_e('Read More','ac-care'); ?><i class="fas fa-arrow-right"></i><span class="screen-reader-text"><?php esc_html_e('Read More','ac-care'); ?></span></a>
+			              	<a href="<?php the_permalink(); ?>" class="read-btn">Xem chi tiết<i class="fas fa-arrow-right"></i><span class="screen-reader-text">Xem chi tiết</span></a>
 	            		</div>
 			        </div>
 			      	<?php $i++; endwhile; 
@@ -90,7 +90,7 @@ get_header(); ?>
 			      					<div class="service-content">
 					            		<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 					            		<p><?php $ac_care_excerpt = get_the_excerpt(); echo esc_html( ac_care_string_limit_words( $ac_care_excerpt,15 ) ); ?></p>
-					            		<a href="<?php the_permalink(); ?>" class="seemore-btn"><?php esc_html_e('Read More','ac-care'); ?><i class="fas fa-caret-right"></i><span class="screen-reader-text"><?php esc_html_e('Read More','ac-care'); ?></span></a>
+					            		<a href="<?php the_permalink(); ?>" class="seemore-btn">Xem chi tiết<i class="fas fa-caret-right"></i><span class="screen-reader-text">Xem chi tiết</span></a>
 					            	</div>
 		          				</div>
 						    </div>

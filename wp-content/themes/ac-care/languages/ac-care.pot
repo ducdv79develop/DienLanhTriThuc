@@ -145,28 +145,28 @@ msgstr ""
 #: single.php:84
 #: single.php:108
 msgid 'Previous Post'
-msgstr ""
+msgstr "Bài viết trước"
 
 #: single.php:33
 #: single.php:59
 #: single.php:84
 #: single.php:108
 msgid 'Previous'
-msgstr ""
+msgstr "Trước"
 
 #: single.php:34
 #: single.php:60
 #: single.php:85
 #: single.php:109
 msgid 'Next Post'
-msgstr ""
+msgstr "Bài viết tiếp"
 
 #: single.php:34
 #: single.php:60
 #: single.php:85
 #: single.php:109
 msgid 'Next'
-msgstr ""
+msgstr "Tiếp"
 
 #: functions.php:39
 msgid 'Primary Menu'
@@ -235,7 +235,7 @@ msgstr ""
 #: page-template/custom-home-page.php:43
 #: page-template/custom-home-page.php:93
 msgid 'Read More'
-msgstr ""
+msgstr "Xem chi tiết"
 
 #: inc/customizer.php:17
 #: inc/customizer.php:391

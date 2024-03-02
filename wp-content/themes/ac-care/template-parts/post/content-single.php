@@ -13,9 +13,9 @@
     <div class="article_content">
       <div class="article-text">
         <div class="metabox"> 
-          <span class="entry-author"><i class="fas fa-user"></i><?php the_author(); ?></span>
+<!--          <span class="entry-author"><i class="fas fa-user"></i>--><?php //the_author(); ?><!--</span>-->
           <span class="entry-date"><i class="fas fa-calendar-alt"></i><?php echo esc_html( get_the_date()); ?></span>
-          <span class="entry-comments"><i class="fas fa-comments"></i><?php comments_number( __('0 Comments','ac-care'), __('0 Comments','ac-care'), __('% Comments','ac-care') ); ?></span>
+          <span class="entry-comments"><i class="fas fa-comments"></i><?php comments_number('0 Bình luận', '1 Bình luận', '% Bình luận'); ?></span>
         </div>
         <?php if(has_post_thumbnail()) { ?>
           <?php the_post_thumbnail(); ?>  

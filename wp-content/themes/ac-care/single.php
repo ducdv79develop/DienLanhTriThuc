@@ -30,8 +30,8 @@ get_header(); ?>
 								endif;
 
 								the_post_navigation( array(
-									'prev_text' => '<span class="screen-reader-text">' . __( 'Previous Post', 'ac-care' ) . '</span><span aria-hidden="true" class="nav-subtitle">' . __( 'Previous Post', 'ac-care' ) . '</span>',
-									'next_text' => '<span class="screen-reader-text">' . __( 'Next Post', 'ac-care' ) . '</span><span aria-hidden="true" class="nav-subtitle">' . __( 'Next Post', 'ac-care' ) . '</span> ',
+									'prev_text' => '<span class="screen-reader-text">' . 'Bài viết trước'. '</span><span aria-hidden="true" class="nav-subtitle">' . 'Bài viết trước' . '</span>',
+									'next_text' => '<span class="screen-reader-text">' . 'Bài viết tiếp' . '</span><span aria-hidden="true" class="nav-subtitle">' . 'Bài viết tiếp' . '</span> ',
 								) );
 
 							endwhile; // End of the loop.
@@ -56,8 +56,8 @@ get_header(); ?>
 								endif;
 
 								the_post_navigation( array(
-									'prev_text' => '<span class="screen-reader-text">' . __( 'Previous Post', 'ac-care' ) . '</span><span aria-hidden="true" class="nav-subtitle">' . __( 'Previous Post', 'ac-care' ) . '</span>',
-									'next_text' => '<span class="screen-reader-text">' . __( 'Next Post', 'ac-care' ) . '</span><span aria-hidden="true" class="nav-subtitle">' . __( 'Next Post', 'ac-care' ) . '</span> ',
+									'prev_text' => '<span class="screen-reader-text">' . 'Bài viết trước' . '</span><span aria-hidden="true" class="nav-subtitle">' . 'Bài viết trước'. '</span>',
+									'next_text' => '<span class="screen-reader-text">' . 'Bài viết tiếp' . '</span><span aria-hidden="true" class="nav-subtitle">' . 'Bài viết tiếp' . '</span> ',
 								) );
 
 							endwhile; // End of the loop.
@@ -81,8 +81,8 @@ get_header(); ?>
 								endif;
 
 								the_post_navigation( array(
-									'prev_text' => '<span class="screen-reader-text">' . __( 'Previous Post', 'ac-care' ) . '</span><span aria-hidden="true" class="nav-subtitle">' . __( 'Previous Post', 'ac-care' ) . '</span>',
-									'next_text' => '<span class="screen-reader-text">' . __( 'Next Post', 'ac-care' ) . '</span><span aria-hidden="true" class="nav-subtitle">' . __( 'Next Post', 'ac-care' ) . '</span> ',
+									'prev_text' => '<span class="screen-reader-text">' . 'Bài viết trước'. '</span><span aria-hidden="true" class="nav-subtitle">' . 'Bài viết trước' . '</span>',
+									'next_text' => '<span class="screen-reader-text">' . 'Bài viết tiếp' . '</span><span aria-hidden="true" class="nav-subtitle">' . 'Bài viết tiếp' . '</span> ',
 								) );
 
 							endwhile; // End of the loop.
@@ -105,8 +105,8 @@ get_header(); ?>
 								endif;
 
 								the_post_navigation( array(
-									'prev_text' => '<span class="screen-reader-text">' . __( 'Previous Post', 'ac-care' ) . '</span><span aria-hidden="true" class="nav-subtitle">' . __( 'Previous Post', 'ac-care' ) . '</span>',
-									'next_text' => '<span class="screen-reader-text">' . __( 'Next Post', 'ac-care' ) . '</span><span aria-hidden="true" class="nav-subtitle">' . __( 'Next Post', 'ac-care' ) . '</span> ',
+									'prev_text' => '<span class="screen-reader-text">' . 'Bài viết trước' . '</span><span aria-hidden="true" class="nav-subtitle">' . 'Bài viết trước'. '</span>',
+									'next_text' => '<span class="screen-reader-text">' . 'Bài viết tiếp' . '</span><span aria-hidden="true" class="nav-subtitle">' . 'Bài viết tiếp' . '</span> ',
 								) );
 
 							endwhile; // End of the loop.

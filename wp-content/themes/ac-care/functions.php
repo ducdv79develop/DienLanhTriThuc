@@ -7,7 +7,17 @@
  */
 
 include get_theme_file_path( 'vendor/wptrt/autoload/src/AC_Care_Loader.php' );
-
+define('THEME_VERSION', '1.0');
+define('SITE_NAME', trailingslashit(get_bloginfo()));
+define('HOME_URL', trailingslashit(home_url()));
+define('THEME_DIR', trailingslashit(get_template_directory()));
+define('THEME_URL', trailingslashit(get_template_directory_uri()));
+/** Sets the theme assets URIs. */
+define('THEME_CSS', trailingslashit(THEME_URL) . 'assets/css');
+define('THEME_IMG', trailingslashit(THEME_URL) . 'assets/images');
+define('THEME_JS', trailingslashit(THEME_URL) . 'assets/js');
+define('CS_ACTIVE_SHORTCODE', false);
+define('CS_ACTIVE_CUSTOMIZE', false);
 $ac_care_loader = new \WPTRT\Autoload\AC_Care_Loader();
 
 $ac_care_loader->ac_care_add( 'WPTRT\\Customize\\Section', get_theme_file_path( 'vendor/wptrt/customize-section-button/src' ) );
