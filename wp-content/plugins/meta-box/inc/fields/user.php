@@ -1,4 +1,6 @@
 <?php
+defined( 'ABSPATH' ) || die;
+
 /**
  * The user select field.
  */
@@ -36,6 +38,8 @@ class RWMB_User_Field extends RWMB_Object_Choice_Field {
 		// Query the database.
 		$items = self::query( null, $field );
 		$items = array_values( $items );
+
+		$items = apply_filters( 'rwmb_ajax_get_users', $items, $field, $request );
 
 		$data = [ 'items' => $items ];
 
@@ -90,11 +94,22 @@ class RWMB_User_Field extends RWMB_Object_Choice_Field {
 		return $field;
 	}
 
-	public static function query( $meta, array $field ) : array {
+	public static function query( $meta, array $field ): array {
 		$display_field = $field['display_field'];
 		$args          = wp_parse_args( $field['query_args'], [
 			'orderby' => $display_field,
 			'order'   => 'asc',
+			'fields'  => [
+				'ID',
+				'user_login',
+				'user_pass',
+				'user_nicename',
+				'user_email',
+				'user_url',
+				'user_registered',
+				'user_status',
+				'display_name',
+			],
 		] );
 
 		$meta = wp_parse_id_list( (array) $meta );
@@ -102,6 +117,7 @@ class RWMB_User_Field extends RWMB_Object_Choice_Field {
 		// Query only selected items.
 		if ( ! empty( $field['ajax'] ) && ! empty( $meta ) ) {
 			$args['include'] = $meta;
+			$args['number']  = count( $meta );
 		}
 
 		// Get from cache to prevent same queries.
@@ -160,5 +176,17 @@ class RWMB_User_Field extends RWMB_Object_Choice_Field {
 		}
 
 		return sprintf( '<a href="%s">%s</a>', esc_url( $url ), esc_html( $text ) );
+	}
+
+	public static function add_new_form( array $field ): string {
+		if ( ! current_user_can( 'create_users' ) ) {
+			return '';
+		}
+
+		return sprintf(
+			'<a href="#" class="rwmb-user-add-button rwmb-modal-add-button" data-url="%s">%s</a>',
+			admin_url( 'user-new.php' ),
+			esc_html__( 'Add New User', 'meta-box' )
+		);
 	}
 }

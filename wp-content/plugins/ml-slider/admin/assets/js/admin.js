@@ -85,11 +85,17 @@ window.jQuery(function ($) {
         }
 
         // Remove the events for image APIs
-        remove_image_apis()
+        remove_image_apis();
+
+        if(window.location.href.indexOf('metaslider-start') > -1) {
+            var slideshow_id = "";
+        } else {
+            var slideshow_id = window.parent.metaslider_slider_id;
+        }
 
         var data = {
             action: 'create_image_slide',
-            slider_id: window.parent.metaslider_slider_id,
+            slider_id: slideshow_id,
             selection: slide_ids,
             _wpnonce: metaslider.create_slide_nonce
         };
@@ -100,41 +106,61 @@ window.jQuery(function ($) {
             url: metaslider.ajaxurl,
             data: data,
             type: 'POST',
-            error: function (error) {
-                APP && APP.notifyError('metaslider/slide-create-failed', error, true)
+            error: function (xhr, status, error) {
+                var err = JSON.parse(xhr.responseText);
+                APP && APP.notifyError('metaslider/slide-create-failed', err.data.messages[1]['errors']['create_failed'][0], true)
             },
             success: function (response) {
+                if(window.location.href.indexOf('metaslider-start') > -1) {
+                    window.location.href = 'admin.php?page=metaslider&id=' + response.data;
+                } else {
+                    // Mount and render each new slide
+                    response.data.forEach(function (slide) {
+                        // TODO: Eventually move the creation to the slideshow or slide vue component
+                        // TODO: Be careful about the handling of filters (ex. scheduling)
+                        var res = window.metaslider.app.Vue.compile(slide['html'])
 
-                // Mount and render each new slide
-                response.data.forEach(function (slide) {
-                    // TODO: Eventually move the creation to the slideshow or slide vue component
-                    // TODO: Be careful about the handling of filters (ex. scheduling)
-                    var res = window.metaslider.app.Vue.compile(slide['html'])
 
-                    // Mount the slide to the end of the list
-                    $('#metaslider-slides-list > tbody').append(
-                        (new window.metaslider.app.Vue({
+                        // Mount the slide to the beginning or end of the list
+                        const cont_ = (new window.metaslider.app.Vue({
                             render: res.render,
                             staticRenderFns: res.staticRenderFns
-                        }).$mount()).$el
-                    )
-                })
+                        }).$mount()).$el;
 
-                // Add timeouts to give some breating room to the notice animations
-                setTimeout(function () {
-                    if (APP) {
-                        const message = slide_ids.length == 1 ? APP.__('1 slide added successfully', 'ml-slider') : APP.__('%s slides added successfully')
-                        APP.notifySuccess(
-                            'metaslider/slides-created',
-                            APP.sprintf(message, slide_ids.length),
-                            true
-                        )
-                    }
+                        if (metaslider.newSlideOrder === 'last') {
+                            $('#metaslider-slides-list > tbody').append(cont_);
+                        } else {
+                            $('#metaslider-slides-list > tbody').prepend(cont_);
+                        }
+
+                        // Display image (is hidden by default)
+                        var thumb = $("#slide-"+slide.slide_id).find('.update-image .thumb img');
+                        fit_one_thumb(thumb);
+                    })
+
+                    /* Get the last added slide to avoid multiple scrollTo calls 
+                     * when adding more than one slide in bulk */
+                    var last_item = response.data[response.data.length - 1].slide_id;
+
+                    $([document.documentElement, document.body]).animate({
+                        scrollTop: metaslider.newSlideOrder === 'last' ? $("#slide-"+last_item).offset().top : 0
+                    }, 2000);
+
+                    // Add timeouts to give some breating room to the notice animations
                     setTimeout(function () {
-                        APP && APP.triggerEvent('metaslider/save')
+                        if (APP) {
+                            const message = slide_ids.length == 1 ? APP.__('1 slide added successfully', 'ml-slider') : APP.__('%s slides added successfully')
+                            APP.notifySuccess(
+                                'metaslider/slides-created',
+                                APP.sprintf(message, slide_ids.length),
+                                true
+                            )
+                        }
+                        setTimeout(function () {
+                            APP && APP.triggerEvent('metaslider/save')
+                        }, 1000);
                     }, 1000);
-                }, 1000);
-
+                }
             }
         })
     })
@@ -146,6 +172,11 @@ window.jQuery(function ($) {
         if (!media_library_events.loaded) {
             media_library_events.attach_event(create_slides)
         }
+    })
+
+    create_slides.on('content:activate', function () {
+        // Remove filters to don't allow to insert other media type different to images
+        $('#media-attachment-filters').remove();
     })
 
     /**
@@ -162,6 +193,9 @@ window.jQuery(function ($) {
         unwanted_media_menu_items.forEach(function (item) {
             $('#menu-item-' + item.id).remove();
         })
+
+        // Remove filters to don't allow to insert other media type different to images
+        $('#media-attachment-filters').remove();
     })
     APP && create_slides.on('open', function () {
         APP.notifyInfo('metaslider/add-slide-opening-ui', APP.__('Opening add slide UI...', 'ml-slider'))
@@ -283,13 +317,18 @@ window.jQuery(function ($) {
                     /**
                      * Updates the image on success
                      */
-                    $('#slide-' + $this.data('slideId') + ' .thumb')
-                        .css('background-image', 'url(' + response.data.thumbnail_url + ')');
+                    var new_image = $('#slide-' + $this.data('slideId') + ' .thumb').find('img');
+                    new_image.attr(
+                        'srcset',
+                        `${response.data.thumbnail_url_large} 1024w, ${response.data.thumbnail_url_medium} 768w, ${response.data.thumbnail_url_small} 240w`
+                    );
+                    new_image.attr('src', response.data.thumbnail_url_small);
+                    
                     // set new attachment ID
                     var $edited_slide_elms = $('#slide-' + $this.data('slideId') + ', #slide-' + $this.data('slideId') + ' .update-image');
                     $edited_slide_elms.data('attachment-id', selected_item.id);
 
-                    if (response.data.thumbnail_url) {
+                    if (response.data.thumbnail_url_small) {
                         $('#slide-' + $this.data('slideId')).trigger('metaslider/attachment/updated', response.data);
                     }
 
@@ -316,6 +355,23 @@ window.jQuery(function ($) {
         create_slides.on('close', function () {
             remove_image_apis()
         })
+
+        /**
+         * Add back "Update Slide Image" button text and button-primary class
+         * after saving image changes or going back from image-edit
+         * https://github.com/MetaSlider/metaslider/issues/448
+         */
+        update_slide_frame.on('all', function () { 
+            // Only in library screen
+            if(update_slide_frame.state().id === 'library') {
+                // Hide left menu (Actions)
+                update_slide_frame.$el.addClass('hide-menu');
+                // Add back text and class to the button
+                update_slide_frame.$el.find('.media-button-select')
+                    .text(update_slide_frame.options.button.text)
+                    .addClass('button-primary');
+            }
+        });
     })
 
     /**
@@ -357,7 +413,7 @@ window.jQuery(function ($) {
         delete window.metaslider.slide_type
     }
 
-    var add_image_apis = function (slide_type, slide_id) {
+    var add_image_apis = window.metaslider.add_image_apis = function (slide_type, slide_id) {
 
         // This is the pro layer screen (not currently used)
         if ($('.media-menu-item.active:contains("Layer")').length) {
@@ -394,7 +450,7 @@ window.jQuery(function ($) {
     /**
      * Remove tab and events for api type images. Add this when a modal closes to avoid duplicate events
      */
-    var remove_image_apis = function () {
+    var remove_image_apis = window.metaslider.remove_image_apis = function () {
 
         // Some things shouldn't happen when we're about to reload
         if (window.metaslider.about_to_reload) {
@@ -479,8 +535,8 @@ window.jQuery(function ($) {
                     // @codingStandardsIgnoreEnd
 
                     // If the trash link isn't there, add it in (without counter)
-                    if ('none' == $('.restore-slide-link').css('display')) {
-                        $('.restore-slide-link').css('display', 'inline');
+                    if ('none' == $('.trashed-slides-cont').css('display')) {
+                        $('.trashed-slides-cont').css('display', '');
                     }
                 }, 1000);
             }
@@ -488,7 +544,7 @@ window.jQuery(function ($) {
     });
 
     /**
-     * delete a slide using ajax (avoid losing changes)
+     * undelete a slide using ajax (avoid losing changes)
      */
     $(".metaslider").on('click', '.undo-delete-slide, .trash-view-restore', function (event) {
         event.preventDefault();
@@ -568,6 +624,67 @@ window.jQuery(function ($) {
         });
     });
 
+    /**
+     * delete a slide permanently using ajax (avoid losing changes)
+     */
+    $(".metaslider").on('click', '.trash-view-permanent', function (event) {
+        event.preventDefault();
+        var $this = $(this);
+        var data = {
+            action: 'permanent_delete_slide',
+            _wpnonce: metaslider.permanent_delete_slide_nonce,
+            slide_id: $this.data('slideId')
+        };
+
+        // Set the slider state to deleting
+        $this.parents('#slide-' + $this.data('slideId'))
+            .removeClass('ms-restored')
+            .addClass('ms-deleting')
+            .append('<div class="ms-delete-overlay"><i style="height:24px;width:24px"><svg class="ms-spin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-loader"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg></i></div>');
+        $this.parents('#slide-' + $this.data('slideId'))
+            .find('.ms-delete-status')
+            .remove();
+
+        $.ajax({
+            url: metaslider.ajaxurl,
+            data: data,
+            type: 'POST',
+            error: function (response) {
+                // Delete failed. Remove delete state UI
+                alert(response.responseJSON.data.message);
+                $slide = $this.parents('#slide-' + $this.data('slideId'));
+                $slide.removeClass('ms-deleting');
+                $slide.find('.ms-delete-overlay').remove();
+            },
+            success: function (response) {
+                var count = 10;
+
+                // Remove deleting state and add a deleted state with restore option
+                setTimeout(function () {
+                    $slide = $this.parents('#slide-' + $this.data('slideId'));
+                    $slide.addClass('ms-deleted')
+                        .removeClass('ms-deleting')
+                        .find('.metaslider-ui-controls').append(
+                        '<button class="undo-delete-slide" title="' + metaslider.restore_language + '" data-slide-id="' + $this.data('slideId') + '">' + metaslider.restore_language + '</button>'
+                    );
+
+                    // Grab the image from the slide
+                    var img = $slide.find('.thumb').css('background-image')
+                        .replace(/^url\(["']?/, '')
+                        .replace(/["']?\)$/, '');
+
+                    // If the image is the same as the URL then it's empty (external slide type)
+                    img = (window.location.href === img) ? '' : img;
+
+                    // If the trash link isn't there, add it in (without counter)
+                    if ('none' == $('.restore-slide-link').css('display')) {
+                        $('.restore-slide-link').css('display', 'inline');
+                    }
+                }, 1000);
+            }
+        });
+    });
+
 
     // bind an event to the slides table to update the menu order of each slide
     // TODO: Remove this soon
@@ -604,7 +721,7 @@ window.jQuery(function ($) {
                         if (crop_changed) {
                             slide_row.data('crop_changed', false);
                         }
-                        if (response.data.thumbnail_url) {
+                        if (response.data.thumbnail_url_small) {
                             $this.closest('tr.slide').trigger('metaslider/attachment/updated', response.data);
                         }
                     }
@@ -619,6 +736,248 @@ window.jQuery(function ($) {
     $('.tipsy-tooltip-bottom').tipsy({live: false, delayIn: 500, html: true, gravity: 'n'})
     $('.tipsy-tooltip-bottom-toolbar').tipsy({live: false, delayIn: 500, html: true, gravity: 'n', offset: 2})
 
+    // welcome screen dropdown
+    $('#sampleslider-btn').on('click', function () {
+        window.location.href = $('#sampleslider-options').val();
+    });
+
+    if (window.location.href.indexOf("withcaption") > -1) {
+        $("input[value='override']").attr('checked', true).trigger('click');
+    }
+
+    $("#quickstart-browse-button").click(function(){
+        window.create_slides.open();
+    });
+
+    //dashboard search query on pagination
+    if($("#slideshows-list").length) {
+        if($("#search_slideshow-search-input").length) {
+            var search_string = $("#search_slideshow-search-input").val();
+            if(search_string != "") {
+                $("#slideshows-list .pagination-links a").each(function() {
+                    this.href = this.href + "&s=" + search_string;
+                });
+            }
+        }
+    }
+
+    /**
+     * Hide smooth height setting when image crop is disabled
+     *
+    **/
+    if ($('select[name="settings[smartCrop]"]').val() == 'disabled') {
+        $('input[name="settings[smoothHeight]"]').closest('tr').show();
+    } else {
+        $('input[name="settings[smoothHeight]"]').closest('tr').hide();
+    }
+    $('select[name="settings[smartCrop]"]').change(function(){
+        if ($(this).val() == 'disabled') {
+            $('input[name="settings[smoothHeight]"]').closest('tr').show();
+        } else {
+            $('input[name="settings[smoothHeight]"]').closest('tr').hide();
+            $('input[name="settings[smoothHeight]"]').prop( "checked", false );
+        }
+    });
+
+    /* Dismiss legacy setting notices */
+    $(document).on( 'click', '.ml-legacy-notice .notice-dismiss', function() {
+        var data = {
+            action: 'legacy_notification',
+            notif_status: 'hide',
+            _wpnonce: metaslider.legacy_notification_nonce
+        };
+        $.ajax({
+            url: metaslider.ajaxurl,
+            data: data,
+            type: 'POST',
+            error: function (error) {
+                console.log('Something went wrong:' +  error);
+            },
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    
+    });
+
+    /* Copy to clipboard on Dashboard Page*/
+    $('.copy-shortcode').click(function() {
+        var textToCopy = $(this).text();
+        if (window.isSecureContext) {
+            navigator.clipboard.writeText(textToCopy);
+        } else {
+            var $tempElement = $("<input>");
+            $("body").append($tempElement);
+            $tempElement.val(textToCopy).select();
+            document.execCommand("Copy");
+            $tempElement.remove();
+        }
+        $(this).next('.copy-message').fadeIn().delay(1000).fadeOut();
+    });
+
+    var fitThumbsTimer;
+    
+    /**
+     * Resize all slide thumbnails to fill its container
+     * 
+     * @return void
+     */ 
+    var fit_all_thumbs = function() {
+        $('.update-image .thumb img').each(function() {
+            fit_one_thumb($(this));
+            fit_one_thumb_on_change($(this));
+        });
+    }
+
+    /**
+     * Resize a single slide thumbnails to fill its container
+     * 
+     * @param {object} img <img> element
+     * 
+     * @return void
+     */
+    var fit_one_thumb = window.metaslider.fit_one_thumb = function (img) {
+        var wrapper = img.parent();
+
+        if(typeof img === 'undefined' || typeof wrapper === 'undefined') {
+            console.error('MetaSlider: Image and wrapper thumbnails are not defined!');
+            return;
+        }
+
+        // Image Aspect Ratio is bigger than its container?
+        var imgBiggerAR = img[0].naturalWidth / img[0].naturalHeight > wrapper.width() / wrapper.height();
+        
+        if(imgBiggerAR && (!img[0].style.width.length || img[0].style.width === '100%')) {
+            img.fadeOut(300, function() {
+                img.css({ width: 'auto', height: '100%' }).fadeIn(300);
+            });
+        } else if(!imgBiggerAR && (!img[0].style.width.length || img[0].style.width === 'auto')) {
+            img.fadeOut(300, function() {
+                img.css({ width: '100%', height: 'auto' }).fadeIn(300);
+            });
+        } else {
+            // Default to be sure thumbnail is at least visible
+            if (imgBiggerAR) {
+                img.css({ width: 'auto', height: '100%' });
+            } else {
+                img.css({ width: '100%', height: 'auto' });
+            }
+            img.show();
+        }
+    }
+
+    /**
+     * Detect when src attribute for a thumbnail changes 
+     * and adapt to its parent if needed through fit_one_thumb()
+     * 
+     * @param {object} img <img> element
+     * 
+     * @retun void
+     */
+    var fit_one_thumb_on_change = function (img) {
+        var currentSrc = img.attr('src');
+        setInterval( function() {
+            if (img.attr('src') !== currentSrc) {
+                img.trigger('change'); 
+                currentSrc = img.attr('src');
+                window.metaslider.fit_one_thumb(img);
+            }
+        }, 300);
+    }
+
+    /**
+     * Make sure fit_all_thumbs() is not triggered multiple times at once
+     * 
+     * @return void
+     */
+    var debounce_fit_all_thumbs = function () {
+        clearTimeout(fitThumbsTimer);
+        fitThumbsTimer = setTimeout(function() {
+            fit_all_thumbs();
+        }, 100);
+    }
+
+    /* Resize thumbnails on load */
+    fit_all_thumbs();
+
+    /* Resize thumbnails on screen resize */
+    $(window).resize( function() {
+        debounce_fit_all_thumbs();
+    });
+
+    /**
+     * Fallback after adding a new slide
+     * 
+     * @since 3.60
+     * 
+     * @param {object} data The added slide data 
+     * 
+     * @return void
+     */
+    var after_adding_slide_success = window.metaslider.after_adding_slide_success = function ( data ) {
+        // Mount the slide to the beginning or end of the list
+        var table = $(".metaslider table#metaslider-slides-list");
+
+        if (window.metaslider.newSlideOrder === 'last') {
+            table.append(data.html);
+        } else {
+            table.prepend(data.html);
+        }
+
+        // Display image (is hidden by default)
+        var thumb = $("#slide-"+data.slide_id).find('.update-image .thumb img');
+
+        if (thumb.length) {
+            window.metaslider.fit_one_thumb(thumb);
+        }
+
+        $('html, body').animate({
+            scrollTop: window.metaslider.newSlideOrder === 'last' 
+                ? $($('#slide-'+data.slide_id)).offset().top
+                : 0
+        }, 2000);
+        
+        var APP = window.metaslider.app.MetaSlider;
+        $(".media-modal-close").click();
+
+        // Add timeouts to give some breating room to the notice animations
+        setTimeout(function () {
+            if (APP) {
+                APP.notifySuccess(
+                    'metaslider/slides-created',
+                    APP.__('1 slide added successfully', 'ml-slider'),
+                    true
+                )
+            }
+            setTimeout(function () {
+                APP && APP.triggerEvent('metaslider/save')
+            }, 1000);
+        }, 1000);
+    }
+
+    /* Add mobile icon for slides with existing mobile setting */
+    var show_mobile_icon = function (slide_id) {
+        var mobile_checkboxes = $('#metaslider-slides-list #'+ slide_id +' .mobile-checkbox:checked');
+        var icon = '<span class="mobile_setting_enabled float-left"><span class="inline-block mr-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-smartphone"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></span></span>';
+        var mobile_enabled = $('#metaslider-slides-list #'+ slide_id +' .slide-details .mobile_setting_enabled');
+        if (mobile_checkboxes.length > 0) {
+            if(mobile_enabled.length == 0) {
+                $('#metaslider-slides-list #'+ slide_id +' .slide-details').append(icon);
+            }
+        } else {
+            mobile_enabled.remove();
+        }
+    };
+
+    $('#metaslider-slides-list > tbody  > tr').each(function() {
+        var tr_id = $(this).attr('id');
+        show_mobile_icon(tr_id);
+    });
+
+    $('.mobile-checkbox').click(function(){
+        var slider_id = $(this).attr('name').replace(/[^0-9]/g,'');
+        show_mobile_icon('slide-'+slider_id);
+    });
 
 });
 

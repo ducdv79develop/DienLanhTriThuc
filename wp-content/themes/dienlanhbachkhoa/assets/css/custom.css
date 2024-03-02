@@ -1,0 +1,32 @@
+.section {
+    padding: 30px 0;
+    position: relative;
+    min-height: auto;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row;
+    flex-flow: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.section.dark {
+    background-color: #666
+}
+
+.section-bg {
+    overflow: hidden
+}
+
+.section-bg,.section-content {
+    width: 100%
+}
+
+.section-content {
+    z-index: 1
+}

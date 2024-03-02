@@ -8,9 +8,19 @@
     </div>
     <split-layout :loading="loading">
       <template slot="header">{{ __('Export', 'ml-slider') }}</template>
-      <template slot="description">{{
-          __('Press to load available slideshows then choose which slideshows to export. If you only have a few slideshows we will prepare them automatically.', 'ml-slider')
-        }}
+      <template slot="description">
+        <ul class="export-instruction">
+          <li>{{ __('If you have only a few slideshows, we will prepare them automatically. If you have many slideshows, click the "Load" button.', 'ml-slider') }}</li>
+          <li>{{ __('Choose the slideshows you wish to export.', 'ml-slider') }}</li>
+          <li>{{ __('Click the "Export" button.', 'ml-slider') }}</li>
+          <li>{{ __('A .json file will automatically be downloaded with all your slideshow data.', 'ml-slider') }}</li>
+        </ul>
+        <b>{{ __('A few notes on exporting slideshow images:', 'ml-slider') }}</b>
+        <ul class="export-instruction">
+          <li>{{ __('Your images need to be exported manually. Please upload them to the new website before importing these slideshows.', 'ml-slider') }}</li>
+          <li>{{ __('Images will need to keep the same file names on the new site.', 'ml-slider') }} <a href="https://www.metaslider.com/how-to-export-and-import-slideshows-from-one-website-to-another"
+           target="_blank">{{ this.__('Read our guide on exporting images.', 'ml-slider') }} <span class="dashicons dashicons-external"></span></a> </li>
+        </ul>
       </template>
       <template slot="fields">
         <div v-if="needsSlideshows">
@@ -32,31 +42,8 @@
           <template v-else-if="processing" slot="button">{{ __('Loading...', 'ml-slider') }}</template>
           <template v-else slot="button">{{ __('Load', 'ml-slider') }}</template>
         </action-button>
-      </template>
-    </split-layout>
-    <split-layout
-        v-if="Object.keys(slideshowsList).length || processing"
+        <template v-if="Object.keys(slideshowsList).length || processing"
         :loading="processing">
-      <template slot="header">{{ __('Slideshows', 'ml-slider') }}</template>
-      <template slot="description">
-        {{
-          __('Pressing export will gather and organize all of your slideshows into a single data file that you can use to restore on another website.', 'ml-slider')
-        }}
-      </template>
-      <template slot="description2">
-        {{
-          __('Your images will need to be exported manually and uploaded to the new website before importing these slideshows. Additionally, image file names need to match as we will use built in WordPress functions to locate the image based on its current name.', 'ml-slider')
-        }}
-        <a href="https://www.metaslider.com/how-to-export-and-import-slideshows-from-one-website-to-another"
-           target="_blank">{{ this.__('Learn how', 'ml-slider') }}</a>
-      </template>
-      <template v-if="proUser" slot="description3">
-        {{
-          __('Please note that content contained in "Post Type" slides will not be exported. Only the slide configurations that refer to the content will be.', 'ml-slider')
-        }}
-      </template>
-      <template slot="fields">
-        <div class="mb-10">
           <action-button
               @click="exportSlideshows"
               :disabled="!slideshowsToExport.length">
@@ -76,8 +63,6 @@
             <template slot="header">{{ __('Toggle all slideshows') }}</template>
             <template slot="description">{{ __('Select or deselect all slideshows') }}</template>
           </switch-single-input>
-        </div>
-        <template>
           <div v-for="slideshow in slideshows" :key="slideshow.id">
             <switch-single-input
                 v-model.lazy="slideshowsList[slideshow.id]">
@@ -94,22 +79,21 @@
                       :key="slide.id"
                       class="relative -ml-3 z-30 inline-block h-12 w-12 text-white border border-gray-light shadow-solid rounded-full">
                     <div
-                        v-if="slidesList[slide.id].meta && 'post_feed' === slidesList[slide.id].meta['ml-slider_type']"
+                        v-if="'post_feed' === slide.meta['ml-slider_type']"
                         class="bg-blue border border-blue flex items-center justify-center text-lg text-white rounded-full h-full tipsy-tooltip-top"
                         :original-title="__('Post Feed slide', 'ml-slider')"
                         :title="__('Post Feed slide', 'ml-slider')">
                       P
                     </div>
                     <div
-                        v-else-if="slidesList[slide.id].meta && 'external' === slidesList[slide.id].meta['ml-slider_type']"
+                        v-else-if="'external' === slide.meta['ml-slider_type']"
                         class="bg-blue-light border border-blue-light flex items-center justify-center text-lg text-white rounded-full h-full tipsy-tooltip-top"
                         :original-title="__('External slide', 'ml-slider')"
                         :title="__('External slide', 'ml-slider')">
                       E
                     </div>
                     <img
-                        v-if="slidesList[slide.id]"
-                        :src="slidesList[slide.id].thumbnail"
+                        v-else :src="slide.thumbnail"
                         class="gradient border border-white rounded-full h-full inline-block"
                         alt="">
                   </div>
@@ -149,7 +133,6 @@ export default {
   computed: {
     ...mapState({
       slideshows: state => state.slideshows.all,
-      slidesList: state => state.slideshows.slides,
       totalSlideshows: state => state.slideshows.totalSlideshows
     }),
     loading() {
@@ -184,7 +167,6 @@ export default {
   data() {
     return {
       slideshowsList: {},
-      slides: {},
       processing: false,
       exporting: false,
     }

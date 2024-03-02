@@ -1,10 +1,13 @@
 <?php
+defined( 'ABSPATH' ) || die;
+
 /**
  * The color field which uses WordPress color picker to select a color.
  */
 class RWMB_Color_Field extends RWMB_Input_Field {
 	public static function admin_enqueue_scripts() {
 		wp_enqueue_style( 'rwmb-color', RWMB_CSS_URL . 'color.css', [ 'wp-color-picker' ], RWMB_VER );
+		wp_style_add_data( 'rwmb-color', 'path', RWMB_CSS_DIR . 'color.css' );
 
 		$dependencies = [ 'wp-color-picker' ];
 		$args         = func_get_args();

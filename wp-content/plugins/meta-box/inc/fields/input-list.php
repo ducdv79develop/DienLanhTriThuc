@@ -1,10 +1,13 @@
 <?php
+defined( 'ABSPATH' ) || die;
+
 /**
  * The input list field which displays choices in a list of inputs.
  */
 class RWMB_Input_List_Field extends RWMB_Choice_Field {
 	public static function admin_enqueue_scripts() {
 		wp_enqueue_style( 'rwmb-input-list', RWMB_CSS_URL . 'input-list.css', [], RWMB_VER );
+		wp_style_add_data( 'rwmb-input-list', 'path', RWMB_CSS_DIR . 'input-list.css' );
 		wp_enqueue_script( 'rwmb-input-list', RWMB_JS_URL . 'input-list.js', [], RWMB_VER, true );
 	}
 

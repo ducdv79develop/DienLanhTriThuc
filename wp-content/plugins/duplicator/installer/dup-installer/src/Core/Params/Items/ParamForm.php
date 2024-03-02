@@ -4,21 +4,20 @@
  * param descriptor
  *
  * Standard: PSR-2
+ *
  * @link http://www.php-fig.org/psr/psr-2 Full Documentation
  *
  * @package SC\DUPX\U
- *
  */
 
 namespace Duplicator\Installer\Core\Params\Items;
 
-use Duplicator\Libs\Upsell;
+use Duplicator\Installer\Utils\InstallerUpsell;
 use DUPX_U;
 use Exception;
 
 /**
  * This class extends ParamItem describing how the parameter should be handled within the form.
- *
  */
 class ParamForm extends ParamItem
 {
@@ -1100,6 +1099,7 @@ class ParamForm extends ParamItem
      * get current label html
      *
      * @param bool $echo if true echo HTML
+     *
      * @return string
      */
     protected function getLabelHtml($echo = true)
@@ -1132,7 +1132,7 @@ class ParamForm extends ParamItem
                     class="pro-flag" 
                     data-tooltip-title="<?php echo DUPX_U::esc_attr($flagTitle);?>" 
                     data-tooltip="<?php echo DUPX_U::esc_attr($this->formAttr['proFlag'] .
-                        Upsell::getCampaignTooltipHTML(array('utm_medium' => 'installer', 'utm_content' => 'option_' . $this->name))); ?>"
+                        InstallerUpsell::getCampaignTooltipHTML(array('utm_medium' => 'installer', 'utm_content' => 'option_' . $this->name))); ?>"
                 >*</sup>
             <?php } ?>
         </span>
@@ -1163,6 +1163,7 @@ class ParamForm extends ParamItem
 
     /**
      * return array dato to store in json array data
+     *
      * @return array
      */
     public function toArrayData()

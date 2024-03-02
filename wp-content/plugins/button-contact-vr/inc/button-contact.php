@@ -47,120 +47,223 @@ final class PZF {
 		}?>
 		<div id="button-contact-vr" class="<?php echo $class_active_allinone;?>">
 			<div id="gom-all-in-one"><!-- v3 -->
-				<!-- contact form -->
+				
 				<?php
 				if(get_option('pzf_enable_contact_form')){
 				?>
+				<!-- contact form -->
 				<div id="contact-form-vr" class="button-contact">
 					<div class="phone-vr">
 						<div class="phone-vr-circle-fill"></div>
 						<div class="phone-vr-img-circle">			
-							<img src="<?php echo PZF_URL.'img/icon'.get_option('pzf_icon_contact_form').'.png'; ?>" />
+							<img alt="Phone" src="<?php echo PZF_URL.'img/icon'.get_option('pzf_icon_contact_form').'.png'; ?>" />
 						</div>
 					</div>	
-				</div>	
-				<?php }; ?>
+				</div>					
 				<!-- end contact form -->
+				<?php }; ?>
 				
-				<!-- showroom -->
 				<?php
 				if(get_option('pzf_enable_showroom')){
 				?>
+				<!-- showroom -->
 				<div id="contact-showroom" class="button-contact <?php echo get_option('pzf_content_showroom')?'no-event':''; ?>">
 					<div class="phone-vr">
 						<div class="phone-vr-circle-fill"></div>
 						<div class="phone-vr-img-circle">
 							<?php if(get_option('pzf_link_showroom')){ ?>
 								<a href="<?php echo get_option('pzf_link_showroom'); ?>" <?php echo get_option('pzf_link_newtab_showroom')?'target="_blank"':''; ?>>	
-									<img src="<?php echo PZF_URL.'img/showroom'.get_option('pzf_icon_showroom').'.png'; ?>" />
+									<img alt="Showroom" src="<?php echo PZF_URL.'img/showroom'.get_option('pzf_icon_showroom').'.png'; ?>" />
 								</a>
 							<?php }else{ ?>
-								<img src="<?php echo PZF_URL.'img/icon'.get_option('pzf_icon_showroom').'.png'; ?>" />
+								<img alt="showroom" src="<?php echo PZF_URL.'img/icon'.get_option('pzf_icon_showroom').'.png'; ?>" />
 							<?php }; ?>
 						</div>
 					</div>	
 				</div>	
-				<?php }; ?>
 				<!-- end showroom -->
+				<?php }; ?>
 
-				<!-- contact -->
+				<?php
+				if(get_option('pzf_linkggmap')){
+				?>
+				<!-- map -->
+				<div id="map-vr" class="button-contact">
+					<div class="phone-vr">
+						<div class="phone-vr-circle-fill"></div>
+						<div class="phone-vr-img-circle">
+							<a target="_blank" href="<?php echo get_option('pzf_linkggmap'); ?>">				
+								<img alt="google map" src="<?php echo PZF_URL.'img/showroom4.png'; ?>" />
+							</a>
+						</div>
+					</div>
+					</div>
+				<!-- end map -->
+				<?php }; ?>
+
 				<?php
 				if(get_option('pzf_contact_link')){
 				?>
+				<!-- contact -->
 				<div id="contact-vr" class="button-contact">
 					<div class="phone-vr">
 						<div class="phone-vr-circle-fill"></div>
 						<div class="phone-vr-img-circle">
 							<a href="<?php echo get_option('pzf_contact_link'); ?>">				
-								<img src="<?php echo PZF_URL.'img/contact.png'; ?>" />
+								<img alt="Liên hệ" src="<?php echo PZF_URL.'img/contact.png'; ?>" />
 							</a>
 						</div>
 					</div>
 					</div>
-				<?php }; ?>
 				<!-- end contact -->
+				<?php }; ?>
 
-				<!-- viber -->
 				<?php
 				if(get_option('pzf_viber')){
 				?>
+				<!-- viber -->
 				<div id="viber-vr" class="button-contact">
 					<div class="phone-vr">
 						<div class="phone-vr-circle-fill"></div>
 						<div class="phone-vr-img-circle">
 							<a target="_blank" href="viber://add?number=<?php echo preg_replace( '/\D/', '',get_option('pzf_viber')); ?>">				
-								<img src="<?php echo PZF_URL.'img/viber.png'; ?>" />
+								<img alt="Viber" src="<?php echo PZF_URL.'img/viber.png'; ?>" />
 							</a>
 						</div>
 					</div>
 					</div>
-				<?php }; ?>
 				<!-- end viber -->
+				<?php }; ?>
 
-				<!-- zalo -->
+				<?php
+				if(get_option('pzf_linkfanpage')){
+				?>
+				<!-- fanpage -->
+				<div id="fanpage-vr" class="button-contact">
+					<div class="phone-vr">
+						<div class="phone-vr-circle-fill"></div>
+						<div class="phone-vr-img-circle">
+							<a target="_blank" href="<?php echo get_option('pzf_linkfanpage'); ?>">				
+								<img alt="Fanpage" src="<?php echo PZF_URL.'img/Facebook.png'; ?>" />
+							</a>
+						</div>
+					</div>
+					</div>
+				<!-- end fanpage -->
+				<?php }; ?>
+
+				<?php
+				if(get_option('pzf_tiktok')){
+				?>
+				<!-- tiktok -->
+				<div id="tiktok-vr" class="button-contact">
+					<div class="phone-vr">
+						<div class="phone-vr-circle-fill"></div>
+						<div class="phone-vr-img-circle">
+							<a target="_blank" href="<?php echo get_option('pzf_tiktok'); ?>">				
+								<img alt="tiktok" src="<?php echo PZF_URL.'img/tiktok.png'; ?>" />
+							</a>
+						</div>
+					</div>
+					</div>
+				<!-- end tiktok -->
+				<?php }; ?>
+				
+				<?php
+				if(get_option('pzf_telegram')){
+				?>
+				<!-- telegram -->
+				<div id="telegram-vr" class="button-contact">
+					<div class="phone-vr">
+						<div class="phone-vr-circle-fill"></div>
+						<div class="phone-vr-img-circle">
+							<a target="_blank" href="<?php echo get_option('pzf_telegram'); ?>">				
+								<img alt="telegram" src="<?php echo PZF_URL.'img/telegram.png'; ?>" />
+							</a>
+						</div>
+					</div>
+					</div>
+				<!-- end telegam -->
+				<?php }; ?>
+				
+				<?php
+				if(get_option('pzf_instagram')){
+				?>
+				<!-- instagram -->
+				<div id="instagram-vr" class="button-contact">
+					<div class="phone-vr">
+						<div class="phone-vr-circle-fill"></div>
+						<div class="phone-vr-img-circle">
+							<a target="_blank" href="<?php echo get_option('pzf_instagram'); ?>">				
+								<img  alt="Instagram" src="<?php echo PZF_URL.'img/instagram.png'; ?>" />
+							</a>
+						</div>
+					</div>
+					</div>
+				<!-- end instagram -->
+				<?php }; ?>
+				
+				<?php
+				if(get_option('pzf_youtube')){
+				?>
+				<!-- youtube -->
+				<div id="youtube-vr" class="button-contact">
+					<div class="phone-vr">
+						<div class="phone-vr-circle-fill"></div>
+						<div class="phone-vr-img-circle">
+							<a target="_blank" href="<?php echo get_option('pzf_youtube'); ?>">				
+								<img alt="youtube" src="<?php echo PZF_URL.'img/youtube.png'; ?>" />
+							</a>
+						</div>
+					</div>
+					</div>
+				<!-- end youtube -->
+				<?php }; ?>
+
 				<?php
 				if(get_option('pzf_zalo')){
 				?>
+				<!-- zalo -->
 				<div id="zalo-vr" class="button-contact">
 					<div class="phone-vr">
 						<div class="phone-vr-circle-fill"></div>
 						<div class="phone-vr-img-circle">
 							<a target="_blank" href="https://zalo.me/<?php echo preg_replace( '/\D/', '',get_option('pzf_zalo')); ?>">				
-								<img src="<?php echo PZF_URL.'img/zalo.png'; ?>" />
+								<img alt="Zalo" src="<?php echo PZF_URL.'img/zalo.png'; ?>" />
 							</a>
 						</div>
 					</div>
 					</div>
-				<?php }; ?>
 				<!-- end zalo -->
+				<?php }; ?>
 
-				<!-- whatsapp -->
 				<?php
 				if(get_option('pzf_whatsapp')){
 				?>
+				<!-- whatsapp -->
 				<div id="whatsapp-vr" class="button-contact">
 					<div class="phone-vr">
 						<div class="phone-vr-circle-fill"></div>
 						<div class="phone-vr-img-circle">
 							<a target="_blank" href=" https://wa.me/<?php echo preg_replace( '/\D/', '',get_option('pzf_whatsapp')); ?>">				
-								<img src="<?php echo PZF_URL.'img/whatsapp.png'; ?>" />
+								<img alt="Whatsapp" src="<?php echo PZF_URL.'img/whatsapp.png'; ?>" />
 							</a>
 						</div>
 					</div>
 					</div>
-				<?php }; ?>
 				<!-- end whatsapp -->
+				<?php }; ?>
 
-				<!-- Phone -->
 				<?php
 				if(get_option('pzf_phone')){
 				?>
+				<!-- Phone -->
 				<div id="phone-vr" class="button-contact">
 					<div class="phone-vr">
 						<div class="phone-vr-circle-fill"></div>
 						<div class="phone-vr-img-circle">
 							<a href="tel:<?php echo preg_replace( '/\D/', '',get_option('pzf_phone')); ?>">				
-								<img src="<?php echo PZF_URL.'img/phone.png'; ?>" />
+								<img alt="Phone" src="<?php echo PZF_URL.'img/phone.png'; ?>" />
 							</a>
 						</div>
 					</div>
@@ -173,9 +276,59 @@ final class PZF {
 							</a>
 						</div>
 					<?php };?>
+				<!-- end phone -->
 
 				<?php }; ?>
-				<!-- end phone -->
+				<?php
+				if(get_option('pzf_phone2')){
+				?>
+				<!-- Phone -->
+				<div id="phone-vr2" class="button-contact">
+					<div class="phone-vr">
+						<div class="phone-vr-circle-fill"></div>
+						<div class="phone-vr-img-circle">
+							<a href="tel:<?php echo preg_replace( '/\D/', '',get_option('pzf_phone2')); ?>">				
+								<img  alt="phone" src="<?php echo PZF_URL.'img/phone.png'; ?>" />
+							</a>
+						</div>
+					</div>
+					</div>
+					<?php 
+						if(get_option('pzf_phone_bar') == '1'){ ?>
+						<div class="phone-bar phone-bar2 phone-bar-n">
+							<a href="tel:<?php echo preg_replace( '/\D/', '',get_option('pzf_phone2')); ?>">
+								<span class="text-phone"><?php echo get_option('pzf_phone2'); ?></span>
+							</a>
+						</div>
+					<?php };?>
+				<!-- end phone 2 -->
+
+				<?php }; ?>
+				<?php
+				if(get_option('pzf_phone3')){
+				?>
+				<!-- Phone3 -->
+				<div id="phone-vr3" class="button-contact">
+					<div class="phone-vr">
+						<div class="phone-vr-circle-fill"></div>
+						<div class="phone-vr-img-circle">
+							<a href="tel:<?php echo preg_replace( '/\D/', '',get_option('pzf_phone3')); ?>">				
+								<img alt="Phone" src="<?php echo PZF_URL.'img/phone.png'; ?>" />
+							</a>
+						</div>
+					</div>
+					</div>
+					<?php 
+						if(get_option('pzf_phone_bar') == '1'){ ?>
+						<div class="phone-bar phone-bar3 phone-bar-n">
+							<a href="tel:<?php echo preg_replace( '/\D/', '',get_option('pzf_phone3')); ?>">
+								<span class="text-phone"><?php echo get_option('pzf_phone3'); ?></span>
+							</a>
+						</div>
+					<?php };?>
+				<!-- end phone 3-->
+
+				<?php }; ?>
 			</div><!-- end v3 class gom-all-in-one -->
 
 			<?php
@@ -184,7 +337,7 @@ final class PZF {
 					<div class="phone-vr">
 						<div class="phone-vr-circle-fill"></div>
 						<div class="phone-vr-img-circle">			
-							<img src="<?php echo PZF_URL.'img/icon'.get_option('pzf_icon_all_in_one').'.png'; ?>" />
+							<img alt="All in one" src="<?php echo PZF_URL.'img/icon'.get_option('pzf_icon_all_in_one').'.png'; ?>" />
 						</div>
 					</div>					
 					<?php 
@@ -333,6 +486,18 @@ final class PZF {
 					#phone-vr .phone-vr-circle-fill {
 					    opacity: 0.7;box-shadow: 0 0 0 0 <?php echo get_option('pzf_color_phone'); ?>;
 					}
+					.phone-bar2 a,#phone-vr2 .phone-vr-circle-fill,#phone-vr2 .phone-vr-img-circle,#phone-vr2 .phone-bar a {
+					    background-color: <?php echo get_option('pzf_color_phone2'); ?>;
+					}
+					#phone-vr2 .phone-vr-circle-fill {
+					    opacity: 0.7;box-shadow: 0 0 0 0 <?php echo get_option('pzf_color_phone2'); ?>;
+					}
+					.phone-bar3 a,#phone-vr3 .phone-vr-circle-fill,#phone-vr3 .phone-vr-img-circle,#phone-vr3 .phone-bar a {
+					    background-color: <?php echo get_option('pzf_color_phone3'); ?>;
+					}
+					#phone-vr3 .phone-vr-circle-fill {
+					    opacity: 0.7;box-shadow: 0 0 0 0 <?php echo get_option('pzf_color_phone3'); ?>;
+					}
 				</style>
 				<!-- color phone -->
 			<?php }; ?>
@@ -349,6 +514,7 @@ final class PZF {
 				</style>
 				<!-- color contact form -->
 			<?php }; ?>
+
 		<?php if(get_option('pzf_color_contact')){ ?>
 		<style>
 			#contact-vr .phone-vr-circle-fill,#contact-vr .phone-vr-img-circle {
@@ -359,6 +525,18 @@ final class PZF {
 			}
 		</style>
 			<?php };?>
+
+		<?php if(get_option('pzf_color_linkggmap')){ ?>
+		<style>
+			#map-vr .phone-vr-circle-fill,#map-vr .phone-vr-img-circle {
+			    background-color: <?php echo get_option('pzf_color_linkggmap'); ?>;
+			}
+			#map-vr .phone-vr-circle-fill {
+			    opacity: 0.7;box-shadow: 0 0 0 0 <?php echo get_option('pzf_color_linkggmap'); ?>;
+			}
+		</style>
+			<?php };?>
+
 		<?php if(get_option('pzf_color_showroom')){ ?>
 		<!-- color showroom -->
 		<style>
@@ -432,7 +610,15 @@ final class PZF {
 				#button-contact-vr {display: none;}
 			}
 		</style>
+			<?php }; ?>
+		<?php if(get_option('pzf_off_effects')){ ?>
+		<!-- hide desktop -->
+		<style>
+			.phone-vr-img-circle {animation: none;}
+			.phone-vr-circle-fill {animation: none;}
+		</style>
 			<?php };
+
 
 	}// add frontend to footer theme
 }

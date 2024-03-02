@@ -3,7 +3,7 @@
  * Plugin Name: Button contact VR
  * Plugin URI: webvocuc.com
  * Description: Button contact call, zalo, whatsapp, messenger, popup form, popup showroom...
- * Version: 4.2
+ * Version: 4.7
  * Author: VirusTran
  * Author URI: virustran
  * License: GPLv2
@@ -21,14 +21,25 @@ define( 'PZF_URL', plugin_dir_url( PZF_FILE ) );
 
 function register_mysettings() {
     register_setting( 'pzf-settings-group', 'pzf_phone' );
+    register_setting( 'pzf-settings-group', 'pzf_phone2' );//4.3
+    register_setting( 'pzf-settings-group', 'pzf_phone3' );//4.3
     register_setting( 'pzf-settings-group', 'pzf_color_phone' );
+    register_setting( 'pzf-settings-group', 'pzf_color_phone2' ); //4.3
+    register_setting( 'pzf-settings-group', 'pzf_color_phone3' ); //4.3
     register_setting( 'pzf-settings-group', 'pzf_phone_bar' );
 
+    register_setting( 'pzf-settings-group', 'pzf_linkfanpage' ); //4.3
     register_setting( 'pzf-settings-group', 'pzf_whatsapp' );
     register_setting( 'pzf-settings-group', 'pzf_zalo' );
+    register_setting( 'pzf-settings-group', 'pzf_telegram' ); //4.4
+    register_setting( 'pzf-settings-group', 'pzf_instagram' ); //4.4
+    register_setting( 'pzf-settings-group', 'pzf_youtube' ); //4.4
+    register_setting( 'pzf-settings-group', 'pzf_tiktok' ); //4.7
     register_setting( 'pzf-settings-group', 'pzf_viber' );        
     register_setting( 'pzf-settings-group', 'pzf_contact_link' );
     register_setting( 'pzf-settings-group', 'pzf_color_contact' );
+    register_setting( 'pzf-settings-group', 'pzf_linkggmap' ); //4.3
+    register_setting( 'pzf-settings-group', 'pzf_color_linkggmap' );//4.3
 
     register_setting( 'pzf-settings-group', 'pzf_id_fanpage' );
     register_setting( 'pzf-settings-group', 'pzf_color_fb' );
@@ -41,6 +52,8 @@ function register_mysettings() {
     register_setting( 'pzf-settings-group-setting', 'pzf_hide_desktop' );
     register_setting( 'pzf-settings-group-setting', 'pzf_add_css' ); // 4.0
     register_setting( 'pzf-settings-group-setting', 'pzf_add_js' ); // 4.0
+    register_setting( 'pzf-settings-group-setting', 'pzf_off_effects' ); // 4.3    
+
 // All in one: 3.0
     register_setting( 'pzf_settings_all_in_one', 'pzf_enable_all_in_one' );
     register_setting( 'pzf_settings_all_in_one', 'pzf_note_all_in_one' );
@@ -96,6 +109,12 @@ function add_action_links ( $actions ) {
    $actions = array_merge( $actions, $mylinks );
    return $actions;
 }
+// Register and enqueue custom admin CSS
+function custom_admin_css() {
+  wp_register_style( 'custom-admin', plugins_url( 'css/style-admin.css', __FILE__ ) );
+  wp_enqueue_style( 'custom-admin' );
+}
+add_action( 'admin_enqueue_scripts', 'custom_admin_css' );
 
 // add backend
 function pzf_settings_page() {
@@ -113,5 +132,5 @@ function pzf_settings_contact_form() {
 function pzf_settings_showroom() {
     include PZF_PATH. '/inc/showroom.php';
 }
-
+// end backend
 PZF::instance();

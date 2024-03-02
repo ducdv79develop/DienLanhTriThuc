@@ -3,13 +3,12 @@
 /**
  *
  * @package templates/default
- *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 
 use Duplicator\Installer\Core\Params\PrmMng;
-use Duplicator\Libs\Upsell;
+use Duplicator\Installer\Utils\InstallerUpsell;
 
 $paramsManager = PrmMng::getInstance();
 if (DUPX_InstallerState::isRestoreBackup()) {
@@ -30,7 +29,7 @@ if (DUPX_InstallerState::isRestoreBackup()) {
         data-tooltip-title="Upgrade Features"
         data-tooltip="<?php echo DUPX_U::esc_attr(
             '<p>Enhance the install experiance with custom search and replace features.</p>' .
-            Upsell::getCampaignTooltipHTML(array('utm_medium' => 'installer', 'utm_content' => "Custom Search and Replace"))
+            InstallerUpsell::getCampaignTooltipHTML(array('utm_medium' => 'installer', 'utm_content' => "Custom Search and Replace"))
         ); ?>">*
     </sup>
 </div>

@@ -1,10 +1,13 @@
 <?php
+defined( 'ABSPATH' ) || die;
+
 /**
  * The text fieldset field, which allows users to enter content for a list of text fields.
  */
 class RWMB_Fieldset_Text_Field extends RWMB_Input_Field {
 	public static function admin_enqueue_scripts() {
 		wp_enqueue_style( 'rwmb-fieldset-text', RWMB_CSS_URL . 'fieldset-text.css', [], RWMB_VER );
+		wp_style_add_data( 'rwmb-fieldset-text', 'path', RWMB_CSS_DIR . 'fieldset-text.css' );
 	}
 
 	/**

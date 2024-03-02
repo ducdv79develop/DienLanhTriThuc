@@ -56,8 +56,8 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="<?php echo home_url("/"); ?>" title="Điện Lạnh Bách Khoa 360">
-                                    <img class="logo" alt="Điện Lạnh Bách Khoa 360"
+                                <a href="<?php echo home_url("/"); ?>" title="Điện Lạnh Trí Thức">
+                                    <img class="logo" alt="Điện Lạnh Trí Thức"
                                          src="<?php echo THEME_URL . '/assets/images/logo.png'?>"
                                          style="margin-top:10px;margin-bottom:10px;">
                                 </a>

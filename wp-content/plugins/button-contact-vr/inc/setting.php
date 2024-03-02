@@ -36,6 +36,12 @@
             	Bottom <input placeholder="0%" type="number" min="0" max="100" name="pzf_location_bottom" value="<?php echo get_option('pzf_location_bottom'); ?>" /> <i>unit %</i>
             </td>
         </tr> 
+        <tr valign="top">
+            <th scope="row">Turn off effects</th>
+            <td>
+                <input id="pzf_off_effects" name="pzf_off_effects" type="checkbox" value="1" <?php echo get_option('pzf_off_effects') == '1' ? 'checked="checked"' : '' ?> />            
+            </td>
+        </tr>
 
         <tr valign="top">
             <th rowspan="2" scope="row">Hide on</th>
@@ -46,7 +52,7 @@
         <tr>        	
             <td><input id="pzf_hide_mobile" name="pzf_hide_mobile" type="checkbox" value="1" <?php echo get_option('pzf_hide_mobile') == '1' ? 'checked="checked"' : '' ?> /> Mobile
             </td>
-        </tr>    
+        </tr>
         <tr valign="top">
             <th scope="row">Custom CSS</th>
             <td><textarea placeholder="Add custom CSS here"  name="pzf_add_css" style="height: 150px;width: 100%;max-width: 700px;" /><?php echo get_option('pzf_add_css'); ?></textarea><br>
